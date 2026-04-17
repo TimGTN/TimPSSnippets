@@ -5,7 +5,7 @@ language: powershell
 tags: function, dialog, file, folder
 description: Displays a modern Windows file or folder picker dialog
 created: 2026-04-17T20:23:39.135Z
-updated: 2026-04-17T22:26:43
+updated: 2026-04-17T22:31:56
 -->
 
 # Invoke-ItemPickerDialog
@@ -62,10 +62,13 @@ function Invoke-ItemPickerDialog {
     [CmdletBinding()]
     param(
         [Parameter()]
+        [ValidateNotNullOrEmpty()]
         [string]$Title = "Select",
 
+        [ValidateNotNullOrEmpty()]
         [string]$InitialDirectory = [Environment]::GetFolderPath("Desktop"),
 
+        [ValidateNotNullOrEmpty()]
         [string]$Filter = "All files (*.*)|*.*",
 
         [switch]$Folder,
