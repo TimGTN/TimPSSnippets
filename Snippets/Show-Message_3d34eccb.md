@@ -2,17 +2,17 @@
 id: 3d34eccb
 title: Show-Message
 language: powershell
-tags: function, xml, namespace
+tags: function, dialog
 description: Displays a Windows Forms message box and optionally returns the user's choice
 created: 2026-04-17T08:27:00.686Z
-updated: 2026-04-17T10:29:51
+updated: 2026-04-17T10:30:41
 -->
 
 # Show-Message
 
 > Displays a Windows Forms message box and optionally returns the user's choice
 
-<p><code>function</code> <code>xml</code> <code>namespace</code></p>
+<p><code>function</code> <code>dialog</code></p>
 
 ```powershell
 function Show-Message {
