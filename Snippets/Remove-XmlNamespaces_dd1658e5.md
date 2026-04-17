@@ -5,7 +5,7 @@ language: powershell
 tags: function, xml, namespace
 description: Removes all namespace declarations and prefixes from an XML string
 created: 2026-04-17T08:09:41.284Z
-updated: 2026-04-17T10:12:34
+updated: 2026-04-17T22:26:26
 -->
 
 # Remove-XmlNamespaces
@@ -16,40 +16,40 @@ updated: 2026-04-17T10:12:34
 
 ```powershell
 function Remove-XmlNamespaces {
-<#
-    .SYNOPSIS
-        Removes all namespace declarations and prefixes from an XML string.
+    <#
+        .SYNOPSIS
+            Removes all namespace declarations and prefixes from an XML string.
 
-    .DESCRIPTION
-        Parses the input as an XElement (System.Xml.Linq), then strips namespace
-        declarations and prefixes from every element and attribute in the tree.
-        Returns the cleaned XML as a string, optionally without indentation.
+        .DESCRIPTION
+            Parses the input as an XElement (System.Xml.Linq), then strips namespace
+            declarations and prefixes from every element and attribute in the tree.
+            Returns the cleaned XML as a string, optionally without indentation.
 
-    .PARAMETER XmlString
-        The XML string to process. Accepts pipeline input.
+        .PARAMETER XmlString
+            The XML string to process. Accepts pipeline input.
 
-    .PARAMETER NoFormatting
-        When specified, returns the XML on a single line without indentation.
+        .PARAMETER NoFormatting
+            When specified, returns the XML on a single line without indentation.
 
-    .OUTPUTS
-        System.String — The namespace-free XML string.
+        .OUTPUTS
+            System.String — The namespace-free XML string.
 
-    .EXAMPLE
-        Remove-XmlNamespaces -XmlString $rawXml
+        .EXAMPLE
+            Remove-XmlNamespaces -XmlString $rawXml
 
-    .EXAMPLE
-        $rawXml | Remove-XmlNamespaces -NoFormatting
+        .EXAMPLE
+            $rawXml | Remove-XmlNamespaces -NoFormatting
 
-    .NOTES
-        Author:      Tim GILLOTIN
-        Contact:     @TimGTN
-        Created:     2024-09-29
+        .NOTES
+            Author:      Tim GILLOTIN
+            Contact:     @TimGTN
+            Created:     2024-09-29
 
-        Version history:
-        1.0.0 - (2024-09-29) Function created
-        2.0.0 - (2026-04-17) Direct attribute removal, 
-                             pipeline support
-#>
+            Version history:
+            1.0.0 - (2024-09-29) Function created
+            2.0.0 - (2026-04-17) Direct attribute removal, 
+                                pipeline support
+    #>
     [OutputType([string])]
     [CmdletBinding()]
     param(
