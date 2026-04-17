@@ -5,7 +5,7 @@ language: powershell
 tags: console, function
 description: Change console window parameters
 created: 2026-04-17T08:27:00.686Z
-updated: 2026-04-17T10:53:00
+updated: 2026-04-17T22:26:27
 -->
 
 # Set-ConsoleParameters
@@ -17,32 +17,32 @@ updated: 2026-04-17T10:53:00
 ```powershell
 function Set-ConsoleParameters {
     <#
-    .SYNOPSIS
-        Change console window parameters.
+        .SYNOPSIS
+            Change console window parameters.
 
-    .DESCRIPTION
-        Change console window visibility and/or QuickEdit mode.
+        .DESCRIPTION
+            Change console window visibility and/or QuickEdit mode.
 
-    .PARAMETER WindowState
-        Specify the desired window state.
+        .PARAMETER WindowState
+            Specify the desired window state.
 
-    .PARAMETER DisableQuickEdit
-        Disable QuickEdit mode (prevents console from pausing on click).
+        .PARAMETER DisableQuickEdit
+            Disable QuickEdit mode (prevents console from pausing on click).
 
-    .PARAMETER EnableQuickEdit
-        Enable QuickEdit mode.
+        .PARAMETER EnableQuickEdit
+            Enable QuickEdit mode.
 
-    .LINK
-        https://stackoverflow.com/questions/30872345/script-commands-to-disable-quick-edit-mode
-        https://stackoverflow.com/questions/40617800/opening-powershell-script-and-hide-command-prompt-but-not-the-gui
+        .LINK
+            https://stackoverflow.com/questions/30872345/script-commands-to-disable-quick-edit-mode
+            https://stackoverflow.com/questions/40617800/opening-powershell-script-and-hide-command-prompt-but-not-the-gui
 
-    .NOTES
-        Author:      Tim GILLOTIN
-        Contact:     @TimGTN
-        Created:     2025-02-25
+        .NOTES
+            Author:      Tim GILLOTIN
+            Contact:     @TimGTN
+            Created:     2025-02-25
 
-        Version history:
-        1.0.0 - (2025-02-25) Function created
+            Version history:
+            1.0.0 - (2025-02-25) Function created
     #>
     [CmdletBinding()]
     param(
