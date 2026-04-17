@@ -5,7 +5,7 @@ language: powershell
 tags: function, eventlog
 description: Writes a structured, JSON-enriched entry to the Windows Event Log
 created: 2026-04-17T05:56:57.809Z
-updated: 2026-04-17T08:09:04
+updated: 2026-04-17T08:24:29
 -->
 
 # Write-EnrichedEventLog
