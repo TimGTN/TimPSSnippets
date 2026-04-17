@@ -3,14 +3,14 @@ id: 5818d7bb
 title: Get-WebView2WpfDlls
 language: powershell
 tags: function, webview, wpf
-description: 
+description: Finds and extract WebView2Dlls for WPF from "Microsoft.Web.WebView2" nuget package
 created: 2026-04-17T06:37:56.913Z
-updated: 2026-04-17T08:39:38
+updated: 2026-04-17T08:40:56
 -->
 
 # Get-WebView2WpfDlls
 
-> 
+> Finds and extract WebView2Dlls for WPF from "Microsoft.Web.WebView2" nuget package
 
 <p><code>function</code> <code>webview</code> <code>wpf</code></p>
 
