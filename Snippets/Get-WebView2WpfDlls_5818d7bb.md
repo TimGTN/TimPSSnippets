@@ -5,7 +5,7 @@ language: powershell
 tags: function, webview, wpf
 description: Finds and extract WebView2Dlls for WPF from "Microsoft.Web.WebView2" nuget package
 created: 2026-04-17T06:37:56.913Z
-updated: 2026-04-17T08:40:56
+updated: 2026-04-17T22:25:49
 -->
 
 # Get-WebView2WpfDlls
@@ -16,28 +16,28 @@ updated: 2026-04-17T08:40:56
 
 ```powershell
 function Get-WebView2WpfDlls {
-<#
-    .SYNOPSIS
-        Finds and extract WebView2Dlls for WPF from "Microsoft.Web.WebView2" nuget package.
+    <#
+        .SYNOPSIS
+            Finds and extract WebView2Dlls for WPF from "Microsoft.Web.WebView2" nuget package.
 
-    .DESCRIPTION
-        Finds and extract WebView2Dlls for WPF from "Microsoft.Web.WebView2" nuget package.
+        .DESCRIPTION
+            Finds and extract WebView2Dlls for WPF from "Microsoft.Web.WebView2" nuget package.
 
-    .PARAMETER OutputFolder
-        Specify the folder where the DLLs should be placed.
+        .PARAMETER OutputFolder
+            Specify the folder where the DLLs should be placed.
 
-    .PARAMETER NoClean
-        Prevent extracted nuget package deletion at the end of function.
+        .PARAMETER NoClean
+            Prevent extracted nuget package deletion at the end of function.
 
-    .NOTES
-        Author:      Tim GILLOTIN
-        Contact:     @TimGTN
-        Created:     2025-04-24
+        .NOTES
+            Author:      Tim GILLOTIN
+            Contact:     @TimGTN
+            Created:     2025-04-24
 
-        Version history:
-        1.0.1 - (2026-01-30) Added support to extract NetCore Dlls too (PS7+)
-        1.0.0 - (2025-04-24) Function created
-#>
+            Version history:
+            1.0.1 - (2026-01-30) Added support to extract NetCore Dlls too (PS7+)
+            1.0.0 - (2025-04-24) Function created
+    #>
     param(
         [Parameter()]
         [ValidateScript({Test-Path $_ -PathType Container})]
