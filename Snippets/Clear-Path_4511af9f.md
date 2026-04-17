@@ -2,17 +2,17 @@
 id: 4511af9f
 title: Clear-Path
 language: powershell
-tags: jwt, auth, token, function
+tags: function, path
 description: Sanitizes a file system path by replacing invalid characters with underscores
 created: 2026-04-17T08:04:20.014Z
-updated: 2026-04-17T10:05:45
+updated: 2026-04-17T10:05:59
 -->
 
 # Clear-Path
 
 > Sanitizes a file system path by replacing invalid characters with underscores
 
-<p><code>jwt</code> <code>auth</code> <code>token</code> <code>function</code></p>
+<p><code>function</code> <code>path</code></p>
 
 ```powershell
 function Clear-Path {
