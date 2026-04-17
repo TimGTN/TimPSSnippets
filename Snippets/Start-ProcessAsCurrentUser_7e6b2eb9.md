@@ -5,7 +5,7 @@ language: powershell
 tags: function, user, process
 description: Start a process in the current user session
 created: 2026-04-17T13:04:24.721Z
-updated: 2026-04-17T15:07:44
+updated: 2026-04-17T22:26:42
 -->
 
 # Start-ProcessAsCurrentUser
@@ -16,59 +16,59 @@ updated: 2026-04-17T15:07:44
 
 ```powershell
 function Start-ProcessAsCurrentUser {
-<#
-    .SYNOPSIS
-        Start a process in the current user session.
+    <#
+        .SYNOPSIS
+            Start a process in the current user session.
 
-    .DESCRIPTION
-        Available methods:
-            Token : Uses CreateProcessAsUserW via P/Invoke. Requires SYSTEM privileges.
-                    Window is always hidden natively (CREATE_NO_WINDOW), no flash.
-            Task  : Uses a scheduled task + VBScript (optional) to hide the process window.
-                    Works without SYSTEM privileges.
-            Auto  : Automatically detects whether SeTcbPrivilege is available and picks
-                    the appropriate method.
+        .DESCRIPTION
+            Available methods:
+                Token : Uses CreateProcessAsUserW via P/Invoke. Requires SYSTEM privileges.
+                        Window is always hidden natively (CREATE_NO_WINDOW), no flash.
+                Task  : Uses a scheduled task + VBScript (optional) to hide the process window.
+                        Works without SYSTEM privileges.
+                Auto  : Automatically detects whether SeTcbPrivilege is available and picks
+                        the appropriate method.
 
-        Returns a [System.Diagnostics.Process] object when -PassThru is specified.
+            Returns a [System.Diagnostics.Process] object when -PassThru is specified.
 
-    .PARAMETER Mode
-        Auto (default), Token or Task.
+        .PARAMETER Mode
+            Auto (default), Token or Task.
 
-    .PARAMETER FilePath
-        Absolute path or command name resolved via PATH (e.g. "powershell", "notepad.exe").
+        .PARAMETER FilePath
+            Absolute path or command name resolved via PATH (e.g. "powershell", "notepad.exe").
 
-    .PARAMETER ArgumentList
-        Arguments passed to the executable.
+        .PARAMETER ArgumentList
+            Arguments passed to the executable.
 
-    .PARAMETER WorkingDirectory
-        Working directory for the launched process.
+        .PARAMETER WorkingDirectory
+            Working directory for the launched process.
 
-    .PARAMETER Visible
-        Shows the process window.
+        .PARAMETER Visible
+            Shows the process window.
 
-    .PARAMETER Wait
-        Waits for the process to exit before returning.
+        .PARAMETER Wait
+            Waits for the process to exit before returning.
 
-    .PARAMETER PassThru
-        Returns the [System.Diagnostics.Process] object.
-        Without -Wait, ExitCode is not yet available on the returned object.
+        .PARAMETER PassThru
+            Returns the [System.Diagnostics.Process] object.
+            Without -Wait, ExitCode is not yet available on the returned object.
 
-    .PARAMETER Elevated
-        Token mode only. Attempts to obtain the full/linked token when the session
-        token is a limited UAC token.
+        .PARAMETER Elevated
+            Token mode only. Attempts to obtain the full/linked token when the session
+            token is a limited UAC token.
 
-    .EXAMPLE
-        Start-ProcessAsCurrentUser -FilePath 'powershell' -ArgumentList '-Command "Start-Sleep 5"' -Wait
+        .EXAMPLE
+            Start-ProcessAsCurrentUser -FilePath 'powershell' -ArgumentList '-Command "Start-Sleep 5"' -Wait
 
-    .NOTES
-        Author:      Tim GILLOTIN
-        Contact:     @TimGTN
-        Created:     2026-04-09
+        .NOTES
+            Author:      Tim GILLOTIN
+            Contact:     @TimGTN
+            Created:     2026-04-09
 
-        Version history:
-        1.0.0 - (2026-04-09) Function created
-        2.0.0 - (2026-04-17) Fixed VBS written to SYSTEM temp (access denied); .lnk files now forced to Task mode
-#>
+            Version history:
+            1.0.0 - (2026-04-09) Function created
+            2.0.0 - (2026-04-17) Fixed VBS written to SYSTEM temp (access denied); .lnk files now forced to Task mode
+    #>
     [CmdletBinding()]
     param(
         [ValidateSet('Auto', 'Token', 'Task')]
