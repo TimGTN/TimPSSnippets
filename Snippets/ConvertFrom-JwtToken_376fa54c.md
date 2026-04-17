@@ -5,7 +5,7 @@ language: powershell
 tags: jwt, auth, token, function
 description: Decodes a JSON Web Token (JWT) and returns its Header and Payload as a PSCustomObject
 created: 2026-04-17T06:45:00.045Z
-updated: 2026-04-17T08:47:07
+updated: 2026-04-17T22:26:24
 -->
 
 # ConvertFrom-JwtToken
@@ -16,29 +16,29 @@ updated: 2026-04-17T08:47:07
 
 ```powershell
 function ConvertFrom-JwtToken {
-<#
-    .SYNOPSIS
-        Decodes a JSON Web Token (JWT) and returns its Header and Payload as a PSCustomObject.
+    <#
+        .SYNOPSIS
+            Decodes a JSON Web Token (JWT) and returns its Header and Payload as a PSCustomObject.
 
-    .DESCRIPTION
-        Splits a JWT string into its three parts (Header, Payload, Signature), Base64Url-decodes
-        the first two segments, and deserializes them from JSON.
-        The Signature segment is intentionally ignored as it requires asymmetric key verification.
+        .DESCRIPTION
+            Splits a JWT string into its three parts (Header, Payload, Signature), Base64Url-decodes
+            the first two segments, and deserializes them from JSON.
+            The Signature segment is intentionally ignored as it requires asymmetric key verification.
 
-    .PARAMETER Jwt
-        A valid JWT string in the format: Base64Url(Header).Base64Url(Payload).Signature
-        Must start with 'eyJ' and contain exactly three dot-separated segments.
+        .PARAMETER Jwt
+            A valid JWT string in the format: Base64Url(Header).Base64Url(Payload).Signature
+            Must start with 'eyJ' and contain exactly three dot-separated segments.
 
-    .OUTPUTS
-        PSCustomObject with two properties:
-            - Header  : decoded JWT header claims
-            - Payload : decoded JWT payload claims
+        .OUTPUTS
+            PSCustomObject with two properties:
+                - Header  : decoded JWT header claims
+                - Payload : decoded JWT payload claims
 
-    .EXAMPLE
-        $token = ConvertFrom-JwtToken -Jwt $bearerToken
-        $token.Payload.exp   # expiry Unix timestamp
-        $token.Payload.sub   # subject claim
-#>
+        .EXAMPLE
+            $token = ConvertFrom-JwtToken -Jwt $bearerToken
+            $token.Payload.exp   # expiry Unix timestamp
+            $token.Payload.sub   # subject claim
+    #>
     [OutputType([PSCustomObject])]
     [CmdletBinding()]
     param (
