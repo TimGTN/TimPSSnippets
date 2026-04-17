@@ -5,7 +5,7 @@ language: powershell
 tags: function, dialog, file, folder
 description: Displays a modern Windows file or folder picker dialog
 created: 2026-04-17T20:23:39.135Z
-updated: 2026-04-17T22:24:15
+updated: 2026-04-17T22:26:43
 -->
 
 # Invoke-ItemPickerDialog
@@ -16,49 +16,49 @@ updated: 2026-04-17T22:24:15
 
 ```powershell
 function Invoke-ItemPickerDialog {
-<#
-    .SYNOPSIS
-        Displays a modern Windows file or folder picker dialog.
+    <#
+        .SYNOPSIS
+            Displays a modern Windows file or folder picker dialog.
 
-    .DESCRIPTION
-        Wraps the Vista-style IFileDialog via reflection to provide a single picker
-        for both files and folders. Use -Folder to switch to folder selection mode.
+        .DESCRIPTION
+            Wraps the Vista-style IFileDialog via reflection to provide a single picker
+            for both files and folders. Use -Folder to switch to folder selection mode.
 
-    .PARAMETER Title
-        Text displayed in the dialog title bar.
+        .PARAMETER Title
+            Text displayed in the dialog title bar.
 
-    .PARAMETER InitialDirectory
-        Starting directory when the dialog opens. Defaults to the user's desktop.
+        .PARAMETER InitialDirectory
+            Starting directory when the dialog opens. Defaults to the user's desktop.
 
-    .PARAMETER Filter
-        File type filter string in WinForms format (e.g. "Executables (*.exe)|*.exe|All files (*.*)|*.*").
-        Ignored when -Folder is specified.
+        .PARAMETER Filter
+            File type filter string in WinForms format (e.g. "Executables (*.exe)|*.exe|All files (*.*)|*.*").
+            Ignored when -Folder is specified.
 
-    .PARAMETER Folder
-        Opens the dialog in folder selection mode instead of file selection mode.
+        .PARAMETER Folder
+            Opens the dialog in folder selection mode instead of file selection mode.
 
-    .PARAMETER MultiSelect
-        Allows selecting multiple items. Returns an array of paths.
+        .PARAMETER MultiSelect
+            Allows selecting multiple items. Returns an array of paths.
 
-    .EXAMPLE
-        Invoke-ItemPickerDialog -Title "Select a folder" -Folder
+        .EXAMPLE
+            Invoke-ItemPickerDialog -Title "Select a folder" -Folder
 
-    .EXAMPLE
-        Invoke-ItemPickerDialog -Title "Select setup file" -InitialDirectory "C:\Apps" `
-            -Filter "Setup files (*.exe;*.msi)|*.exe;*.msi|All files (*.*)|*.*"
+        .EXAMPLE
+            Invoke-ItemPickerDialog -Title "Select setup file" -InitialDirectory "C:\Apps" `
+                -Filter "Setup files (*.exe;*.msi)|*.exe;*.msi|All files (*.*)|*.*"
 
-    .OUTPUTS
-        System.String[]
-        Returns an array of selected paths, or $null if the dialog was cancelled.
+        .OUTPUTS
+            System.String[]
+            Returns an array of selected paths, or $null if the dialog was cancelled.
 
-    .NOTES
-        Author:      Tim GILLOTIN
-        Contact:     @TimGTN
-        Created:     2026-04-17
+        .NOTES
+            Author:      Tim GILLOTIN
+            Contact:     @TimGTN
+            Created:     2026-04-17
 
-        Version history:
-        1.0.0 - (2026-04-17) Function created
-#>
+            Version history:
+            1.0.0 - (2026-04-17) Function created
+    #>
     [CmdletBinding()]
     param(
         [Parameter()]
