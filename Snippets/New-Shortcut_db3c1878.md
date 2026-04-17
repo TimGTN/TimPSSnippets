@@ -5,7 +5,7 @@ language: powershell
 tags: shortcut, function
 description: Creates a Windows shortcut (.lnk) file with optional icon, arguments, working directory and window style
 created: 2026-04-17T12:04:51.189Z
-updated: 2026-04-17T14:05:36
+updated: 2026-04-17T22:26:41
 -->
 
 # New-Shortcut
@@ -16,63 +16,63 @@ updated: 2026-04-17T14:05:36
 
 ```powershell
 function New-Shortcut {
-<#
-    .SYNOPSIS
-        Creates a Windows shortcut (.lnk) file with optional icon, arguments, working directory and window style.
-   
-    .DESCRIPTION
-        Creates a Windows shortcut file at the specified path using the WScript.Shell COM object.
-        The destination directory is created automatically if it does not exist.
-        TargetPath is resolved automatically via WorkingDirectory merge or PATH lookup unless -SkipValidation is specified.
+    <#
+        .SYNOPSIS
+            Creates a Windows shortcut (.lnk) file with optional icon, arguments, working directory and window style.
+    
+        .DESCRIPTION
+            Creates a Windows shortcut file at the specified path using the WScript.Shell COM object.
+            The destination directory is created automatically if it does not exist.
+            TargetPath is resolved automatically via WorkingDirectory merge or PATH lookup unless -SkipValidation is specified.
 
-   
-    .PARAMETER Path
-        The directory where the shortcut file will be created. Created automatically if it does not exist.
-  
-    .PARAMETER Name
-        The name of the shortcut file. The .lnk extension is added automatically if omitted.
+    
+        .PARAMETER Path
+            The directory where the shortcut file will be created. Created automatically if it does not exist.
+    
+        .PARAMETER Name
+            The name of the shortcut file. The .lnk extension is added automatically if omitted.
 
-    .PARAMETER TargetPath
-        The full or relative path to the target executable or file.
-        If WorkingDirectory is provided, it will be merged with TargetPath to resolve the full path.
-        If WorkingDirectory is omitted, resolution is attempted via Get-Command (PATH), then as an absolute path.
+        .PARAMETER TargetPath
+            The full or relative path to the target executable or file.
+            If WorkingDirectory is provided, it will be merged with TargetPath to resolve the full path.
+            If WorkingDirectory is omitted, resolution is attempted via Get-Command (PATH), then as an absolute path.
 
-    .PARAMETER ArgumentList
-        One or more arguments to pass to the target executable. Multiple values are joined with a space.
+        .PARAMETER ArgumentList
+            One or more arguments to pass to the target executable. Multiple values are joined with a space.
 
-    .PARAMETER IcoFilePath
-        The full path to the .ico file to use as the shortcut icon.
+        .PARAMETER IcoFilePath
+            The full path to the .ico file to use as the shortcut icon.
 
-    .PARAMETER WorkingDirectory
-        The working directory for the target process. Must exist if specified.
-        If provided alongside TargetPath, both are merged to resolve and validate the target.
+        .PARAMETER WorkingDirectory
+            The working directory for the target process. Must exist if specified.
+            If provided alongside TargetPath, both are merged to resolve and validate the target.
 
-    .PARAMETER WindowStyle
-        The window style for the target process.
-        1 = Normal, 3 = Maximized, 7 = Minimized. Defaults to 1.
+        .PARAMETER WindowStyle
+            The window style for the target process.
+            1 = Normal, 3 = Maximized, 7 = Minimized. Defaults to 1.
 
-    .PARAMETER SkipValidation
-        Skips TargetPath resolution and validation. Useful when the target may not exist at packaging time.
+        .PARAMETER SkipValidation
+            Skips TargetPath resolution and validation. Useful when the target may not exist at packaging time.
 
-    .EXAMPLE
-        New-Shortcut -Path "C:\temp" -Name "myShortcut" -TargetPath "powershell.exe" `
-            -ArgumentList "-NoProfile", "-File `"C:\script.ps1`""
+        .EXAMPLE
+            New-Shortcut -Path "C:\temp" -Name "myShortcut" -TargetPath "powershell.exe" `
+                -ArgumentList "-NoProfile", "-File `"C:\script.ps1`""
 
-    .EXAMPLE
-        New-Shortcut -Path "C:\temp" -Name "myShortcut" -TargetPath "MyApp.exe" `
-            -WorkingDirectory "C:\temp\MyApp" -IcoFilePath "C:\temp\MyApp\icon.ico"
+        .EXAMPLE
+            New-Shortcut -Path "C:\temp" -Name "myShortcut" -TargetPath "MyApp.exe" `
+                -WorkingDirectory "C:\temp\MyApp" -IcoFilePath "C:\temp\MyApp\icon.ico"
 
-    .OUTPUTS
-        System.String. Returns the full path to the created shortcut file.
+        .OUTPUTS
+            System.String. Returns the full path to the created shortcut file.
 
-    .NOTES
-        Author:      Tim GILLOTIN
-        Contact:     @TimGTN
-        Created:     2026-04-17
+        .NOTES
+            Author:      Tim GILLOTIN
+            Contact:     @TimGTN
+            Created:     2026-04-17
 
-        Version history:
-        1.0.0 - (2026-04-17) Function created
-#>
+            Version history:
+            1.0.0 - (2026-04-17) Function created
+    #>
     [CmdletBinding()]
     [OutputType([string])]
     param (
