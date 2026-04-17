@@ -2,17 +2,17 @@
 id: 376fa54c
 title: ConvertFrom-JwtToken
 language: powershell
-tags: jwt, auth, token
+tags: jwt, auth, token, function
 description: Decodes a JSON Web Token (JWT) and returns its Header and Payload as a PSCustomObject
 created: 2026-04-17T06:45:00.045Z
-updated: 2026-04-17T08:46:36
+updated: 2026-04-17T08:47:07
 -->
 
 # ConvertFrom-JwtToken
 
 > Decodes a JSON Web Token (JWT) and returns its Header and Payload as a PSCustomObject
 
-<p><code>jwt</code> <code>auth</code> <code>token</code></p>
+<p><code>jwt</code> <code>auth</code> <code>token</code> <code>function</code></p>
 
 ```powershell
 function ConvertFrom-JwtToken {
