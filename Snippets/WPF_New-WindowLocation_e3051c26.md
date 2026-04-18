@@ -5,7 +5,7 @@ language: powershell
 tags: wpf, location, window, function
 description: Positions a WPF window relative to the available work area (taskbar-aware)
 created: 2026-04-17T07:47:11.757Z
-updated: 2026-04-18T11:32:11
+updated: 2026-04-18T11:36:58
 -->
 
 # WPF New-WindowLocation
@@ -71,6 +71,8 @@ function Set-WindowPosition {
 # ===========
 # TEST SAMPLE
 # ===========
+Add-Type -AssemblyName PresentationFramework
+
 [xml]$Xaml = @'
 <Window 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
