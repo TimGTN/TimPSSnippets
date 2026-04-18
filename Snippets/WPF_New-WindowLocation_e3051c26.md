@@ -2,17 +2,17 @@
 id: e3051c26
 title: WPF New-WindowLocation
 language: powershell
-tags: wpf, location, window, function
+tags: wpf, window, function, position
 description: Positions a WPF window relative to the available work area (taskbar-aware)
 created: 2026-04-17T07:47:11.757Z
-updated: 2026-04-18T11:36:58
+updated: 2026-04-18T11:37:35
 -->
 
 # WPF New-WindowLocation
 
 > Positions a WPF window relative to the available work area (taskbar-aware)
 
-<p><code>wpf</code> <code>location</code> <code>window</code> <code>function</code></p>
+<p><code>wpf</code> <code>window</code> <code>function</code> <code>position</code></p>
 
 ```powershell
 function Set-WindowPosition {
