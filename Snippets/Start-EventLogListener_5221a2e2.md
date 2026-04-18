@@ -5,7 +5,7 @@ language: powershell
 tags: function, eventlog
 description: Registers a real-time, push-based listener on a Windows Event Log source
 created: 2026-04-17T06:26:45.549Z
-updated: 2026-04-17T22:25:48
+updated: 2026-04-18T08:27:58
 -->
 
 # Start-EventLogListener
@@ -148,7 +148,7 @@ function Start-EventLogListener {
 
     $Log              = [System.Diagnostics.EventLog]::new($LogName)
     $StartTime        = [datetime]::Now  # Captured before EnableRaisingEvents — no historical event will pass the timestamp filter
-    $SourceIdentifier = "EventBusListener_$([guid]::NewGuid().Guid)"
+    $SourceIdentifier = "EventLogListener_$([guid]::NewGuid().Guid)"
     $Log.EnableRaisingEvents = $true
 
     $MessageData = @{
