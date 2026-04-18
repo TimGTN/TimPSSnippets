@@ -5,7 +5,7 @@ language: powershell
 tags: function, eventlog
 description: Writes a structured, JSON-enriched entry to the Windows Event Log
 created: 2026-04-17T05:56:57.809Z
-updated: 2026-04-17T22:25:50
+updated: 2026-04-18T13:30:03
 -->
 
 # Write-EnrichedEventLog
@@ -119,7 +119,7 @@ function Write-EnrichedEventLog {
             EntryType = $EntryType
             Message = $Json
         }
-        if ($PSBoundParameters.ContainsKey('Category')) { $Param.Category = $Category }
+        if ($PSBoundParameters.ContainsKey('Category')) { $Param['Category'] = $Category }
         Write-EventLog @Param
     
     } catch {
