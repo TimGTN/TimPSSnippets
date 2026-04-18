@@ -5,7 +5,7 @@ language: powershell
 tags: exit, ise, function
 description: Stops script execution cleanly in both normal and ISE/selection-run contexts
 created: 2026-04-18T10:55:59.466Z
-updated: 2026-04-18T12:56:51
+updated: 2026-04-18T12:57:41
 -->
 
 # Exit-Script
@@ -41,7 +41,7 @@ function Exit-Script {
 
     if ($psISE -or (Get-PSCallStack)[-1].Command -eq '<ScriptBlock>') {
         Write-Verbose "Exit-Script : Script would have stopped with exit code: $ExitCode"
-        break _script_
+        break __Exit-Script__
     }
 
     [System.Environment]::Exit($ExitCode)
