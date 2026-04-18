@@ -5,7 +5,7 @@ language: powershell
 tags: wpf, location, window, function
 description: Positions a WPF window relative to the available work area (taskbar-aware)
 created: 2026-04-17T07:47:11.757Z
-updated: 2026-04-18T11:22:55
+updated: 2026-04-18T11:32:11
 -->
 
 # WPF New-WindowLocation
@@ -89,10 +89,9 @@ $v = (Get-Command "Set-WindowPosition").Parameters.Position.Attributes.ValidValu
 $pMap = @{} ; 0..($v.Count - 1) | ForEach-Object { $pMap[$v[$_]] = $v[($_ + 1) % $v.Count] }
 $Interface.BTN_Test.Content = "GO " + @($pMap.Keys)[0]
 $Interface.BTN_Test.Add_Click{
-    $Source = $_.OriginalSource
-    $Position = $Source.Content.Split(' ')[1]
+    $Position = $_.Source.Content.Split(' ')[1]
     Set-WindowPosition -Window $Interface.Window -Position $Position
-    $Source.Content = "GO " + $pMap[$Position]
+    $_.Source.Content = "GO " + $pMap[$Position]
 }
 
 $Async = $Interface.Window.Dispatcher.InvokeAsync{
