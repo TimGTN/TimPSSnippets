@@ -5,7 +5,7 @@ language: powershell
 tags: type, function
 description: Returns the friendliest PowerShell name for a .NET type
 created: 2026-04-25T11:28:39.695Z
-updated: 2026-04-25T15:15:07
+updated: 2026-04-25T15:16:10
 -->
 
 # Convert-PSTypeToFriendlyName
@@ -20,6 +20,14 @@ function Convert-PSTypeToFriendlyName {
     .SYNOPSIS
         Returns the friendliest PowerShell name for a .NET type.
         Priority: accelerator alias → array → generic → full CLR name.
+
+    .NOTES
+        Author:      Tim GILLOTIN
+        Contact:     @TimGTN
+        Created:     2026-04-25
+
+        Version history:
+        1.0.0 - (2026-04-25) Function created
     #>
     [CmdletBinding()]
     [OutputType([string])]
