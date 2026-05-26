@@ -5,7 +5,7 @@ language: powershell
 tags: function, eventlog
 description: Writes a structured, JSON-enriched entry to the Windows Event Log
 created: 2026-04-17T05:56:57.809Z
-updated: 2026-04-18T13:30:03
+updated: 2026-05-26T11:47:19
 -->
 
 # Write-EnrichedEventLog
@@ -54,6 +54,11 @@ function Write-EnrichedEventLog {
         .PARAMETER Category
             Arbitrary value to simplify filtering events.
 
+        .PARAMETER ComputerName
+            Target computer on which the event is written. Defaults to the local machine (".").
+            Accepts any value recognized as local (localhost, 127.0.0.1, ::1, $env:COMPUTERNAME)
+            and normalizes it to "." automatically.
+
         .EXAMPLE
             Write-EnrichedEventLog `
                 -EventID     1000 `
@@ -68,6 +73,7 @@ function Write-EnrichedEventLog {
             Created:     2026-04-09
 
             Version history:
+            1.1.0 - (2026-05-26) Added remote support (ComputerName)
             1.0.0 - (2026-04-09) Function created
     #>
     [CmdletBinding()]
@@ -91,17 +97,24 @@ function Write-EnrichedEventLog {
         [object]$MessageData,
     
         [ValidateNotNullOrEmpty()]
-        [int]$Category
+        [int]$Category,
+
+        [ValidateNotNullOrEmpty()]
+        [string]$ComputerName = "."
     )
     try {
+        # Normalize ComputerName
+        $Target = if ($ComputerName -in ('localhost','127.0.0.1','::1',$env:COMPUTERNAME))
+            { "." } else { $ComputerName }
+
         # Ensure source exists and is registered to the expected log
-        if ([System.Diagnostics.EventLog]::SourceExists($Source)) {
-            $registeredLog = [System.Diagnostics.EventLog]::LogNameFromSourceName($Source, ".")
+        if ([System.Diagnostics.EventLog]::SourceExists($Source, $Target)) {
+            $registeredLog = [System.Diagnostics.EventLog]::LogNameFromSourceName($Source, $Target)
             if ($registeredLog -ne $LogName) {
                 throw "Source '$Source' is registered under '$registeredLog', not '$LogName'."
             }
         } else {
-            New-EventLog -LogName $LogName -Source $Source -ErrorAction Stop
+            New-EventLog -LogName $LogName -Source $Source -ComputerName $Target -ErrorAction Stop
         }
 
         # Build structured payload
@@ -118,6 +131,7 @@ function Write-EnrichedEventLog {
             EventID = $EventID
             EntryType = $EntryType
             Message = $Json
+            ComputerName = $Target
         }
         if ($PSBoundParameters.ContainsKey('Category')) { $Param['Category'] = $Category }
         Write-EventLog @Param
