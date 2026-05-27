@@ -5,7 +5,7 @@ language: powershell
 tags: session, function
 description: Returns all active interactive sessions on a remote computer
 created: 2026-05-27T19:38:12.054Z
-updated: 2026-05-27T21:38:51
+updated: 2026-05-27T21:39:22
 -->
 
 # Get-ActiveSession
