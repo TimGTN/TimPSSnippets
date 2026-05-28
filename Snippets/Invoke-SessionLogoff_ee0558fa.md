@@ -5,7 +5,7 @@ language: powershell
 tags: session, function, logoff
 description: Logs off a user session on a remote computer
 created: 2026-05-28T07:08:10.881Z
-updated: 2026-05-28T09:08:41
+updated: 2026-05-28T09:14:35
 -->
 
 # Invoke-SessionLogoff
@@ -21,17 +21,14 @@ function Invoke-SessionLogoff {
             Logs off a user session on a remote computer.
 
         .DESCRIPTION
-            Runs the logoff command remotely via Invoke-Command and returns
-            whether the operation succeeded based on the exit code.
+            Runs the logoff command remotely via Invoke-Command and throws
+            an exception if the operation fails.
 
         .PARAMETER ComputerName
             Name of the target computer.
 
         .PARAMETER SessionId
             Terminal Services session ID to log off.
-
-        .OUTPUTS
-            Boolean. $true if logoff succeeded, $false otherwise.
 
         .NOTES
             Author:  Tim GILLOTIN
@@ -55,6 +52,8 @@ function Invoke-SessionLogoff {
         logoff $using:SessionId
         $LASTEXITCODE
     }
-    return ($ExitCode -eq 0)
+    if ($ExitCode -ne 0) {
+        throw "Session $SessionId logoff failed on '$ComputerName' (exitcode: $exitCode)"    
+    }
 }
 ```
